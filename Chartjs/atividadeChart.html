@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="dashboard">
+      <section class="span">
+        <span><b>Temperatura e umidade por horario</b></span>
+        <div class="grafico">
+          <canvas id="grafico_linha"></canvas>
+        </div>
+      </section>
+
+      <section class="span">
+        <span><b>Temperatura e umidade médias por mês</b></span>
+        <div class="grafico">
+          <canvas id="grafico_barra"></canvas>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      const horarios = ["12h", "13h", "14h", "15h", "16h", "17h"];
+      const temperatura_Hora = [30, 29, 28, 25, 22, 23];
+      const umidade_Hora = [80, 82, 80, 85, 80, 83];
+
+      const ctxLinhas = document.getElementById("grafico_linha");
+
+      new Chart(ctxLinhas, {
+        type: "line",
+        data: {
+          labels: horarios,
+          datasets: [
+            {
+              label: "Temperatura °C",
+              data: temperatura_Hora,
+              borderColor: "#FFB300",
+              backgroundColor: "#FFB300",
+              borderWidth: 3,
+              tension: 0.3,
+            },
+            {
+              label: "% Umidade",
+              data: umidade_Hora,
+              borderColor: "#5ED3D6",
+              backgroundColor: "#5ED3D6",
+              borderWidth: 3,
+              tension: 0.3,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+
+      const mes = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"];
+      const temperatura_Mes = [22, 24, 27, 23, 20, 18];
+      const umidade_Mes = [90, 89, 93, 87, 88, 82];
+
+      const ctxBarras = document.getElementById("grafico_barra");
+
+      new Chart(ctxBarras, {
+        type: "bar",
+        data: {
+          labels: mes,
+          datasets: [
+            {
+              label: "Temperatura Média (°C)",
+              data: temperatura_Mes,
+              backgroundColor: "#FFB300",
+            },
+            {
+              label: "Umidade Média (%)",
+              data: umidade_Mes,
+              backgroundColor: "#5ED3D6",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font: Arial;
+    background-color: #eeeeee;
+    color: #222;
+}
+
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 30px 20px;
+}
+
+.span {
+    background-color: #fff;
+    border-radius: 10px;
+
+    padding: 20px;
+    flex: 1 1 450px;
+    max-width: 700px;
+}
+
+.grafico {
+    position: relative;
+    height: 350px;
+}
